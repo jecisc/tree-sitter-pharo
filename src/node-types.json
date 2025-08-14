@@ -1,5 +1,24 @@
 [
   {
+    "type": "class_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -9,11 +28,15 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "class_definition",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "Class",
+    "named": false
   },
   {
     "type": "comment",

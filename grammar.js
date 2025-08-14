@@ -14,9 +14,14 @@ module.exports = grammar({
     $.comment,
   ],
 
+  word: $ => $.identifier,
+
   rules: {
     // TODO: add the actual grammar rules
-    source_file: $ => $.identifier,
+    source_file: $ => $.class_definition,
+
+    // Should not be identifier
+    class_definition: $ => seq(optional($.comment), 'Class', $.identifier),
 
     identifier: $ => /[a-z_]+/,
 
