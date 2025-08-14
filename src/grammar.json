@@ -4,8 +4,21 @@
   "word": "identifier",
   "rules": {
     "source_file": {
-      "type": "SYMBOL",
-      "name": "class_definition"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "class_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "extensions_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "package_definition"
+        }
+      ]
     },
     "class_definition": {
       "type": "SEQ",
@@ -25,6 +38,32 @@
         {
           "type": "STRING",
           "value": "Class"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "extensions_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Extension"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "package_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Package"
         },
         {
           "type": "SYMBOL",

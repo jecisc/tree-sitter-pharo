@@ -19,6 +19,36 @@
     }
   },
   {
+    "type": "extensions_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "package_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -30,12 +60,28 @@
         {
           "type": "class_definition",
           "named": true
+        },
+        {
+          "type": "extensions_definition",
+          "named": true
+        },
+        {
+          "type": "package_definition",
+          "named": true
         }
       ]
     }
   },
   {
     "type": "Class",
+    "named": false
+  },
+  {
+    "type": "Extension",
+    "named": false
+  },
+  {
+    "type": "Package",
     "named": false
   },
   {
