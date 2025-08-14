@@ -10,8 +10,20 @@
 module.exports = grammar({
   name: "pharo",
 
+  extras: $ => [
+    $.comment,
+  ],
+
   rules: {
     // TODO: add the actual grammar rules
-    source_file: $ => "hello"
+    source_file: $ => $.identifier,
+
+    identifier: $ => /[a-z_]+/,
+
+    comment: _ => token(seq(
+        '"',
+        /(""|[^"])*/,
+        '"',
+    )),
   }
 });
