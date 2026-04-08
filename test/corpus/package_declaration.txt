@@ -1,0 +1,11 @@
+==================
+Package declaration
+==================
+
+Package { #name : 'TinyLogger' }
+
+---
+
+(file
+  (package_definition
+    name: (identifier)))
