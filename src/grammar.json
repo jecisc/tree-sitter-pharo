@@ -3,16 +3,16 @@
   "name": "pharo",
   "word": "identifier",
   "rules": {
-    "source_file": {
+    "file": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "class_definition"
+          "name": "extensions_definition"
         },
         {
           "type": "SYMBOL",
-          "name": "extensions_definition"
+          "name": "class_definition"
         },
         {
           "type": "SYMBOL",
@@ -41,7 +41,40 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_class_specification"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "method_definition"
+          }
+        }
+      ]
+    },
+    "_class_specification": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "["
         }
       ]
     },
@@ -53,8 +86,19 @@
           "value": "Extension"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "class_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_simple_name_definition"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "method_definition"
+          }
         }
       ]
     },
@@ -66,14 +110,117 @@
           "value": "Package"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_simple_name_definition"
+          }
         }
       ]
     },
+    "_simple_name_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "STRING",
+          "value": "#name"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "line_continuation": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\\"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "\r"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "\u0000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "self": {
+      "type": "STRING",
+      "value": "self"
+    },
+    "super": {
+      "type": "STRING",
+      "value": "super"
+    },
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
+    },
+    "thisContext": {
+      "type": "STRING",
+      "value": "thisContext"
+    },
+    "nil": {
+      "type": "STRING",
+      "value": "nil"
+    },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z_]+"
+      "value": "[A-Za-z_][A-Za-z0-9_]*"
     },
     "comment": {
       "type": "TOKEN",
@@ -100,6 +247,14 @@
     {
       "type": "SYMBOL",
       "name": "comment"
+    },
+    {
+      "type": "PATTERN",
+      "value": "[\\s\\u00A0\\uFEFF\\u3000]+"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "line_continuation"
     }
   ],
   "conflicts": [],

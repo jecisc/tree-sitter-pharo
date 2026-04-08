@@ -12,29 +12,50 @@ module.exports = grammar({
 
   extras: $ => [
     $.comment,
+    /[\s\u00A0\uFEFF\u3000]+/,
+    $.line_continuation,
   ],
 
   word: $ => $.identifier,
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => choice($.class_definition, $.extensions_definition, $.package_definition),
+    
+    file: $ => choice($.extensions_definition, $.class_definition, $.package_definition),
+
+    class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
 
     // Should not be identifier
-    class_definition: $ => seq(optional($.comment), 'Class', $.identifier),
+    _class_specification: $ => seq($.identifier, '}'),
+
+    method_definition: $ => seq($.identifier, '['),
 
     // Should not be identifier
-    extensions_definition: $ => seq('Extension', $.identifier),
+    extensions_definition: $ => seq('Extension', field('class_name', $._simple_name_definition), repeat($.method_definition)),
 
-    //Should not be identifier
-    package_definition: $ => seq('Package', $.identifier),
+    package_definition: $ => seq('Package', field('name', $._simple_name_definition)),
 
-    identifier: $ => /[a-z_]+/,
+    _simple_name_definition: $ => seq('{', '#name', ':', '\'', $.identifier, '\'', '}'),
+
+    line_continuation: _ => token(seq('\\', choice(seq(optional('\r'), '\n'), '\0'))),
+
+    self: $ => 'self',
+
+    super: $ => 'super',
+
+    true: $ => 'true',
+
+    false: $ => 'false',
+
+    thisContext: $ => 'thisContext',
+
+    nil: $ => 'nil',
+
+    identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
 
     comment: _ => token(seq(
-        '"',
-        /(""|[^"])*/,
-        '"',
+      '"',
+      /(""|[^"])*/,
+      '"',
     )),
   }
 });
