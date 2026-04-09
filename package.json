@@ -1,5 +1,18 @@
 {
+  "name": "tree-sitter-pharo",
+  "description": "Pharo tonel grammar for tree-sitter",
+  "repository": "https://github.com/jecisc/tree-sitter-pharo",
+  "license": "MIT",
+  "author": "Cyril Ferlicot-Delbecque",
+  "contributors": [
+    {
+      "name": "Cyril Ferlicot-Delbecque",
+      "email": "cyril@ferlicot.fr"
+    }
+  ],
   "dependencies": {
-    "tree-sitter-cli": "^0.25.8"
+    "tree-sitter": "^0.25.0",
+    "tree-sitter-cli": "^0.25.8",
+    "node-addon-api": "^8.2.2"
   }
 }
