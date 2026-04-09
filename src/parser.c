@@ -13,10 +13,10 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 13
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 2
+#define FIELD_COUNT 3
 #define MAX_ALIAS_SEQUENCE_LENGTH 5
 #define MAX_RESERVED_WORD_SET_SIZE 0
-#define PRODUCTION_ID_COUNT 5
+#define PRODUCTION_ID_COUNT 6
 #define SUPERTYPE_COUNT 0
 
 enum ts_symbol_identifiers {
@@ -178,12 +178,14 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum ts_field_identifiers {
-  field_class_name = 1,
-  field_name = 2,
+  field_class_comment = 1,
+  field_class_name = 2,
+  field_name = 3,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
+  [field_class_comment] = "class_comment",
   [field_class_name] = "class_name",
   [field_name] = "name",
 };
@@ -191,8 +193,9 @@ static const char * const ts_field_names[] = {
 static const TSMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 1},
   [2] = {.index = 1, .length = 2},
-  [3] = {.index = 3, .length = 1},
-  [4] = {.index = 4, .length = 5},
+  [3] = {.index = 3, .length = 2},
+  [4] = {.index = 5, .length = 1},
+  [5] = {.index = 6, .length = 5},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -202,8 +205,11 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_class_name, 1},
     {field_name, 1, .inherited = true},
   [3] =
+    {field_class_comment, 0},
     {field_name, 2, .inherited = true},
-  [4] =
+  [5] =
+    {field_name, 2, .inherited = true},
+  [6] =
     {field_name, 0},
     {field_name, 1},
     {field_name, 2},
@@ -701,7 +707,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [17] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_extensions_definition, 3, 0, 2),
   [19] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_extensions_definition_repeat1, 2, 0, 0),
   [21] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_extensions_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(18),
-  [24] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__simple_name_definition, 5, 0, 4),
+  [24] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__simple_name_definition, 5, 0, 5),
   [26] = {.entry = {.count = 1, .reusable = true}}, SHIFT(15),
   [28] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
   [30] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_method_definition, 2, 0, 0),
@@ -718,7 +724,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [52] = {.entry = {.count = 1, .reusable = true}}, SHIFT(26),
   [54] = {.entry = {.count = 1, .reusable = true}}, SHIFT(22),
   [56] = {.entry = {.count = 1, .reusable = true}}, SHIFT(21),
-  [58] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_package_definition, 4, 0, 3),
+  [58] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_package_definition, 4, 0, 4),
   [60] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
 };
 

@@ -23,7 +23,7 @@ module.exports = grammar({
     file: $ => choice($.extensions_definition, $.class_definition, $.package_definition),
 
     //class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
-    class_definition: $ => seq(optional($.comment), 'Class', $._class_specification),
+    class_definition: $ => seq(optional(field( 'class_comment', $.comment)), 'Class', $._class_specification),
 
     // Should not be identifier
     _class_specification: $ => seq('{', choice($._simple_name_definition), '}'),

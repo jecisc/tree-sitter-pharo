@@ -1,5 +1,5 @@
 ==================
-Class declaration
+Simplest class declaration
 ==================
 
 Class {
@@ -10,4 +10,22 @@ Class {
 
 (file
   (class_definition
+    name: (identifier)))
+
+==================
+Class declaration with comment
+==================
+
+"
+Comment
+"
+Class {
+	#name : 'TinyLogger'
+}
+
+---
+
+(file
+  (class_definition
+    class_comment: (comment)
     name: (identifier)))

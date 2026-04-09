@@ -27,8 +27,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "comment"
+              "type": "FIELD",
+              "name": "class_comment",
+              "content": {
+                "type": "SYMBOL",
+                "name": "comment"
+              }
             },
             {
               "type": "BLANK"
