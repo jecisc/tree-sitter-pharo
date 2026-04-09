@@ -3,6 +3,28 @@
     "type": "class_definition",
     "named": true,
     "fields": {
+      "category": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#category",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "dashed_name",
+            "named": true
+          }
+        ]
+      },
       "class_comment": {
         "multiple": false,
         "required": false,
@@ -15,7 +37,7 @@
       },
       "name": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "#name",
@@ -31,6 +53,72 @@
           },
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "package": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#package",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "dashed_name",
+            "named": true
+          }
+        ]
+      },
+      "superclass": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#superclass",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "tag": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#tag",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "dashed_name",
             "named": true
           }
         ]
@@ -165,11 +253,31 @@
     }
   },
   {
+    "type": "#category",
+    "named": false
+  },
+  {
     "type": "#name",
     "named": false
   },
   {
+    "type": "#package",
+    "named": false
+  },
+  {
+    "type": "#superclass",
+    "named": false
+  },
+  {
+    "type": "#tag",
+    "named": false
+  },
+  {
     "type": "'",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
@@ -196,6 +304,10 @@
     "type": "comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "dashed_name",
+    "named": true
   },
   {
     "type": "identifier",

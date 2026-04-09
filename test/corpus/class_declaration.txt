@@ -12,6 +12,24 @@ Class {
   (class_definition
     name: (identifier)))
 
+
+
+==================
+Class name declaration without space
+==================
+
+Class {
+	#name: 'TinyLogger'
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)))
+
+
+
 ==================
 Class declaration with comment
 ==================
@@ -29,3 +47,43 @@ Class {
   (class_definition
     class_comment: (comment)
     name: (identifier)))
+
+
+
+==================
+Class declaration with superclass
+==================
+
+Class {
+	#name : 'TinyLogger',
+    #superclass: 'TinyAbstractLogger'
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    superclass: (identifier)))
+
+
+
+==================
+Class declaration with package declaration
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#category : 'Tiny-Logger-Core-Minimal',
+	#package : 'Tiny-Logger',
+	#tag : 'Core-Minimal'
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    category: (dashed_name)
+    package: (dashed_name)
+    tag: (dashed_name)))

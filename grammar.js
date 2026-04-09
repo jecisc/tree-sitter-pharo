@@ -25,9 +25,6 @@ module.exports = grammar({
     //class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
     class_definition: $ => seq(optional(field( 'class_comment', $.comment)), 'Class', $._class_specification),
 
-    // Should not be identifier
-    _class_specification: $ => seq('{', choice($._simple_name_definition), '}'),
-
     method_definition: $ => seq($.identifier, '['),
 
     // Should not be identifier
@@ -35,7 +32,31 @@ module.exports = grammar({
 
     package_definition: $ => seq('Package', seq('{', $._simple_name_definition , '}')),
 
-    _simple_name_definition: $ => field('name', seq('#name', ':', '\'', $.identifier, '\'')),
+
+  
+    // Class definition 
+    _class_specification: $ => seq('{', $._class_field, optional(repeat(seq( ',', $._class_field))), '}'),
+
+    _class_field: $ => choice(
+                          $._simple_name_definition,
+                          $._superclass,
+                          $._package,
+                          $._tag,
+                          $._category
+                        ),
+
+    _simple_name_definition: $ => field('name', seq('#name', ':', '\'', $.identifier, '\'')), // Separating name and : to trim spaces
+
+    _superclass: $ => field('superclass', seq('#superclass', ':', '\'' , $.identifier, '\'')),
+
+    _package: $ => field('package', seq('#package', ':', '\'' , $.dashed_name, '\'')),   //Introduced in v3 of Tonel format
+
+    _tag: $ => field('tag', seq('#tag', ':', '\'' , $.dashed_name, '\'')),  // Introduced in v3 of Tonel format
+
+    _category: $ => field('category', seq('#category', ':', '\'' , $.dashed_name, '\'')),  // Categories are optional in the v3 of the Tonel format
+
+
+
 
     line_continuation: _ => token(seq('\\', choice(seq(optional('\r'), '\n'), '\0'))),
 
@@ -52,6 +73,8 @@ module.exports = grammar({
     nil: $ => 'nil',
 
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
+
+    dashed_name: $ => /[A-Za-z_][A-Za-z0-9_-]*/, //It acts as an identifier but also accept `-`. It is used for package, tag or category name.
 
     comment: _ => token(seq(
       '"',
