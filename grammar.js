@@ -22,19 +22,20 @@ module.exports = grammar({
     
     file: $ => choice($.extensions_definition, $.class_definition, $.package_definition),
 
-    class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
+    //class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
+    class_definition: $ => seq(optional($.comment), 'Class', $._class_specification),
 
     // Should not be identifier
-    _class_specification: $ => seq($.identifier, '}'),
+    _class_specification: $ => seq('{', choice($._simple_name_definition), '}'),
 
     method_definition: $ => seq($.identifier, '['),
 
     // Should not be identifier
     extensions_definition: $ => seq('Extension', field('class_name', $._simple_name_definition), repeat($.method_definition)),
 
-    package_definition: $ => seq('Package', field('name', $._simple_name_definition)),
+    package_definition: $ => seq('Package', seq('{', $._simple_name_definition , '}')),
 
-    _simple_name_definition: $ => seq('{', '#name', ':', '\'', $.identifier, '\'', '}'),
+    _simple_name_definition: $ => field('name', seq('#name', ':', '\'', $.identifier, '\'')),
 
     line_continuation: _ => token(seq('\\', choice(seq(optional('\r'), '\n'), '\0'))),
 

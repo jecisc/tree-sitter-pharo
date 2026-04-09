@@ -1,0 +1,13 @@
+==================
+Class declaration
+==================
+
+Class {
+	#name : 'TinyLogger'
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)))
