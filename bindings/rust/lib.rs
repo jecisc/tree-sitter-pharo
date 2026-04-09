@@ -4,15 +4,9 @@
 //! tree-sitter [`Parser`], and then use the parser to parse some code:
 //!
 //! ```
-//! let code = r#"
-//! "#;
-//! let mut parser = tree_sitter::Parser::new();
-//! let language = tree_sitter_pharo::LANGUAGE;
-//! parser
-//!     .set_language(&language.into())
-//!     .expect("Error loading Pharo parser");
-//! let tree = parser.parse(code, None).unwrap();
-//! assert!(!tree.root_node().has_error());
+//! Class {
+//! 	#name : 'TinyLogger'
+//! }
 //! ```
 //!
 //! [`Parser`]: https://docs.rs/tree-sitter/0.25.8/tree_sitter/struct.Parser.html
