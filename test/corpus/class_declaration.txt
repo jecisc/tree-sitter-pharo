@@ -87,3 +87,93 @@ Class {
     category: (dashed_name)
     package: (dashed_name)
     tag: (dashed_name)))
+
+==================
+Class declaration with one instance variables (simple slots)
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#instVars : [
+		'timestampFormatBlock'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    slots: (slot_definition
+                name: (identifier))))
+
+==================
+Class declaration with one slot
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#instVars : [
+		'#x => ObservableSlot'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    slots: (slot_definition
+                name: (identifier)
+                definition: (identifier))))
+
+==================
+Class declaration with multiple instance variables (simple slots)
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#instVars : [
+		'timestampFormatBlock',
+		'identationString',
+		'depth',
+		'loggersMap'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    slots: (slot_definition
+                name: (identifier))
+    slots: (slot_definition
+                name: (identifier))
+    slots: (slot_definition
+                name: (identifier))
+    slots: (slot_definition
+                name: (identifier))))
+
+==================
+Class declaration with multiple slots
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#instVars : [
+		'#x => ObservableSlot',
+		'#y'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    slots: (slot_definition
+                name: (identifier)
+                definition: (identifier))
+    slots: (slot_definition
+                name: (identifier))))

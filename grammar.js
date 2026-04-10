@@ -20,7 +20,7 @@ module.exports = grammar({
 
   rules: {
     
-    file: $ => choice($.extensions_definition, $.class_definition, $.package_definition),
+    file: $ => choice($.extensions_definition, $.class_definition, $.package_definition, $.slot_definition),
 
     //class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
     class_definition: $ => seq(optional(field( 'class_comment', $.comment)), 'Class', $._class_specification),
@@ -40,6 +40,7 @@ module.exports = grammar({
     _class_field: $ => choice(
                           $._simple_name_definition,
                           $._superclass,
+                          $._instance_slots,
                           $._package,
                           $._tag,
                           $._category
@@ -55,7 +56,15 @@ module.exports = grammar({
 
     _category: $ => field('category', seq('#category', ':', '\'' , $.dashed_name, '\'')),  // Categories are optional in the v3 of the Tonel format
 
+    _instance_slots: $ => field('slots', seq('#instVars' , ':', $._slots)),
 
+    _slots: $ => seq('[' , $.slot_definition , optional(repeat(seq(',', $.slot_definition))) , ']'),
+
+    slot_definition: $ => seq("'", field('name', seq(optional('#'), $.identifier)), optional(seq('=>', field('definition', $.identifier))), "'"),
+
+
+    // Literals
+    string: $ => token(seq("'", /([^']|'')*/, "'")), //To test
 
 
     line_continuation: _ => token(seq('\\', choice(seq(optional('\r'), '\n'), '\0'))),

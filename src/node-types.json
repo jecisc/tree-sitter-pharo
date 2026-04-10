@@ -79,6 +79,36 @@
           }
         ]
       },
+      "slots": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#instVars",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "slot_definition",
+            "named": true
+          }
+        ]
+      },
       "superclass": {
         "multiple": true,
         "required": false,
@@ -205,6 +235,10 @@
         {
           "type": "package_definition",
           "named": true
+        },
+        {
+          "type": "slot_definition",
+          "named": true
         }
       ]
     }
@@ -253,7 +287,45 @@
     }
   },
   {
+    "type": "slot_definition",
+    "named": true,
+    "fields": {
+      "definition": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
     "type": "#category",
+    "named": false
+  },
+  {
+    "type": "#instVars",
     "named": false
   },
   {
@@ -285,6 +357,10 @@
     "named": false
   },
   {
+    "type": "=>",
+    "named": false
+  },
+  {
     "type": "Class",
     "named": false
   },
@@ -298,6 +374,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
