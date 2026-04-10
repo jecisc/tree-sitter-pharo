@@ -177,3 +177,93 @@ Class {
                 definition: (identifier))
     slots: (slot_definition
                 name: (identifier))))
+
+==================
+Class declaration with one class instance variables (simple slots)
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classInstVars : [
+		'timestampFormatBlock'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_slots: (slot_definition
+                name: (identifier))))
+
+==================
+Class declaration with one class slot
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classInstVars : [
+		'#x => ObservableSlot'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_slots: (slot_definition
+                name: (identifier)
+                definition: (identifier))))
+
+==================
+Class declaration with multiple class instance variables (simple slots)
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classInstVars : [
+		'timestampFormatBlock',
+		'identationString',
+		'depth',
+		'loggersMap'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_slots: (slot_definition
+                name: (identifier))
+    class_slots: (slot_definition
+                name: (identifier))
+    class_slots: (slot_definition
+                name: (identifier))
+    class_slots: (slot_definition
+                name: (identifier))))
+
+==================
+Class declaration with multiple class slots
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classInstVars : [
+		'#x => ObservableSlot',
+		'#y'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_slots: (slot_definition
+                name: (identifier)
+                definition: (identifier))
+    class_slots: (slot_definition
+                name: (identifier))))

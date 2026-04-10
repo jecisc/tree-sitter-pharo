@@ -35,6 +35,36 @@
           }
         ]
       },
+      "class_slots": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#classInstVars",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "slot_definition",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": true,
         "required": false,
@@ -322,6 +352,10 @@
   },
   {
     "type": "#category",
+    "named": false
+  },
+  {
+    "type": "#classInstVars",
     "named": false
   },
   {
