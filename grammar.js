@@ -20,12 +20,10 @@ module.exports = grammar({
 
   rules: {
     
-    file: $ => choice($.extensions_definition, $.class_definition, $.package_definition, $.slot_definition),
+    file: $ => choice($.extensions_definition, $.class_definition, $.package_definition, $.method_definition),
 
     //class_definition: $ => seq(optional($.comment), 'Class', $._class_specification, repeat($.method_definition)),
-    class_definition: $ => seq(optional(field( 'class_comment', $.comment)), 'Class', $._class_specification),
-
-    method_definition: $ => seq($.identifier, '['),
+    class_definition: $ => seq(optional(field( 'class_comment', $.comment)), 'Class', $._class_specification , field('methods', optional(repeat($.method_definition)))),
 
     // Should not be identifier
     extensions_definition: $ => seq('Extension', field('class_name', $._simple_name_definition), repeat($.method_definition)),
@@ -67,6 +65,19 @@ module.exports = grammar({
     slot_definition: $ => seq("'", field('name', seq(optional('#'), $.identifier)), optional(seq('=>', field('definition', $.identifier))), "'"),
 
     _class_variables: $ => field('class_variables', seq('#classVars' , ':', seq('[' , repeat(seq(optional(','), "'", $.identifier, "'")) , ']'))),
+
+    // Method definitions
+    method_definition: $ => choice($._tonel_method_definition, $._raw_method_definition),
+
+    _raw_method_definition: $ => seq(field('signature', $.identifier)),
+
+    _tonel_method_definition: $ => seq(field('protocol', $.protocol), field('owner' , $.class_name) , '>>' , field('signature', $.identifier), '['  , ']'), 
+
+    protocol : $ => seq('{', '#category', ':', "'", token(/[^']+/) , "'", "}"),
+
+    class_name :  $ => token(/[^>]*/),
+
+    //_method_defintion_body : $ => , WIP , field('body', optional(repeat($.statement)))
 
 
     // Literals

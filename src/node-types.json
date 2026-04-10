@@ -99,6 +99,16 @@
           }
         ]
       },
+      "methods": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "method_definition",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": true,
         "required": false,
@@ -297,11 +307,11 @@
           "named": true
         },
         {
-          "type": "package_definition",
+          "type": "method_definition",
           "named": true
         },
         {
-          "type": "slot_definition",
+          "type": "package_definition",
           "named": true
         }
       ]
@@ -310,16 +320,37 @@
   {
     "type": "method_definition",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
+    "fields": {
+      "owner": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "class_name",
+            "named": true
+          }
+        ]
+      },
+      "protocol": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "protocol",
+            "named": true
+          }
+        ]
+      },
+      "signature": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -349,6 +380,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "protocol",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "slot_definition",
@@ -433,6 +469,10 @@
     "named": false
   },
   {
+    "type": ">>",
+    "named": false
+  },
+  {
     "type": "Class",
     "named": false
   },
@@ -451,6 +491,10 @@
   {
     "type": "]",
     "named": false
+  },
+  {
+    "type": "class_name",
+    "named": true
   },
   {
     "type": "comment",

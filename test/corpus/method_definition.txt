@@ -1,0 +1,29 @@
+==================
+Empty method definition
+==================
+
+x
+
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)))
+
+==================
+Empty tonel method definition
+==================
+
+{ #category : 'accessing' }
+TinyLogger class >> x [
+	
+]
+
+---
+
+(file
+  (method_definition
+    protocol: (protocol)
+    owner: (class_name)
+    signature: (identifier)))
