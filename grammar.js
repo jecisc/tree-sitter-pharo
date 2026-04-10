@@ -69,15 +69,28 @@ module.exports = grammar({
     // Method definitions
     method_definition: $ => choice($._tonel_method_definition, $._raw_method_definition),
 
-    _raw_method_definition: $ => seq(field('signature', $.identifier)),
+    _raw_method_definition: $ => seq(field('signature', $.identifier), optional($._method_defintion_body)),
 
-    _tonel_method_definition: $ => seq(field('protocol', $.protocol), field('owner' , $.class_name) , '>>' , field('signature', $.identifier), '['  , ']'), 
+    _tonel_method_definition: $ => seq(field('protocol', $.protocol), field('owner' , $.class_name) , '>>' , field('signature', $.identifier), '[' , optional($._method_defintion_body) , ']'), 
 
     protocol : $ => seq('{', '#category', ':', "'", token(/[^']+/) , "'", "}"),
 
     class_name :  $ => token(/[^>]*/),
 
-    //_method_defintion_body : $ => , WIP , field('body', optional(repeat($.statement)))
+    _method_defintion_body : $ => field('body', $._statement), //WIP
+
+    _statement : $ => choice($._expression), //WIP
+
+    _expression : ($) => choice($._literal), //WIP
+
+    _literal : $  => choice(
+                        $.self,
+                      $.super,
+                      $.true,
+                      $.false,
+                      $.nil,
+                      $.thisContext,
+                      $.thisProcess),
 
 
     // Literals
@@ -95,6 +108,8 @@ module.exports = grammar({
     false: $ => 'false',
 
     thisContext: $ => 'thisContext',
+
+    thisProcess: $ => 'thisProcess',
 
     nil: $ => 'nil',
 

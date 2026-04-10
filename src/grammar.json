@@ -568,6 +568,18 @@
             "type": "SYMBOL",
             "name": "identifier"
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_method_defintion_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -605,6 +617,18 @@
         {
           "type": "STRING",
           "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_method_defintion_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -654,6 +678,65 @@
         "type": "PATTERN",
         "value": "[^>]*"
       }
+    },
+    "_method_defintion_body": {
+      "type": "FIELD",
+      "name": "body",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_statement"
+      }
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
+    },
+    "_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_literal"
+        }
+      ]
+    },
+    "_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "self"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "super"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nil"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "thisContext"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "thisProcess"
+        }
+      ]
     },
     "string": {
       "type": "TOKEN",
@@ -736,6 +819,10 @@
     "thisContext": {
       "type": "STRING",
       "value": "thisContext"
+    },
+    "thisProcess": {
+      "type": "STRING",
+      "value": "thisProcess"
     },
     "nil": {
       "type": "STRING",

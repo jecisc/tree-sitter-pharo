@@ -321,6 +321,40 @@
     "type": "method_definition",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "false",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "super",
+            "named": true
+          },
+          {
+            "type": "thisContext",
+            "named": true
+          },
+          {
+            "type": "thisProcess",
+            "named": true
+          },
+          {
+            "type": "true",
+            "named": true
+          }
+        ]
+      },
       "owner": {
         "multiple": false,
         "required": false,
@@ -506,6 +540,10 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -513,6 +551,30 @@
     "type": "line_continuation",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "nil",
+    "named": true
+  },
+  {
+    "type": "self",
+    "named": true
+  },
+  {
+    "type": "super",
+    "named": true
+  },
+  {
+    "type": "thisContext",
+    "named": true
+  },
+  {
+    "type": "thisProcess",
+    "named": true
+  },
+  {
+    "type": "true",
+    "named": true
   },
   {
     "type": "{",

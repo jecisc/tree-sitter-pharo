@@ -1,0 +1,97 @@
+==================
+self
+==================
+
+x
+    self
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (self)))
+
+==================
+super
+==================
+
+x
+    super
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (super)))
+
+==================
+nil
+==================
+
+x
+    nil
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (nil)))
+
+==================
+true
+==================
+
+x
+    true
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (true)))
+
+==================
+false
+==================
+
+x
+    false
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (false)))
+
+==================
+thisContext
+==================
+
+x
+    thisContext
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (thisContext)))
+
+==================
+thisProcess
+==================
+
+x
+    thisProcess
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (thisProcess)))
