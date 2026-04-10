@@ -35,13 +35,14 @@ module.exports = grammar({
 
   
     // Class definition 
-    _class_specification: $ => seq('{', $._class_field, optional(repeat(seq( ',', $._class_field))), '}'),
+    _class_specification: $ => seq('{', repeat(seq( optional(','), $._class_field)), '}'),
 
     _class_field: $ => choice(
                           $._simple_name_definition,
                           $._superclass,
                           $._instance_slots,
                           $._class_slots,
+                          $._class_variables,
                           $._package,
                           $._tag,
                           $._category
@@ -61,9 +62,11 @@ module.exports = grammar({
 
     _class_slots: $ => field('class_slots', seq('#classInstVars' , ':', $._slots)),
 
-    _slots: $ => seq('[' , $.slot_definition , optional(repeat(seq(',', $.slot_definition))) , ']'),
+    _slots: $ => seq('[' , repeat(seq(optional(','), $.slot_definition)) , ']'),
 
     slot_definition: $ => seq("'", field('name', seq(optional('#'), $.identifier)), optional(seq('=>', field('definition', $.identifier))), "'"),
+
+    _class_variables: $ => field('class_variables', seq('#classVars' , ':', seq('[' , repeat(seq(optional(','), "'", $.identifier, "'")) , ']'))),
 
 
     // Literals

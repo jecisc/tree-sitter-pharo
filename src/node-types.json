@@ -65,6 +65,40 @@
           }
         ]
       },
+      "class_variables": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#classVars",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": true,
         "required": false,
@@ -356,6 +390,10 @@
   },
   {
     "type": "#classInstVars",
+    "named": false
+  },
+  {
+    "type": "#classVars",
     "named": false
   },
   {

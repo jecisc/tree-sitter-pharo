@@ -267,3 +267,43 @@ Class {
                 definition: (identifier))
     class_slots: (slot_definition
                 name: (identifier))))
+
+==================
+Class declaration with a class variable
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classVars : [
+		'Default'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_variables: (identifier)))
+
+==================
+Class declaration with class variables
+==================
+
+Class {
+	#name : 'TinyLogger',
+	#classVars : [
+		'Default',
+        'Settings',
+        'Facade'
+	]
+}
+
+---
+
+(file
+  (class_definition
+    name: (identifier)
+    class_variables: (identifier)
+    class_variables: (identifier)
+    class_variables: (identifier)))
