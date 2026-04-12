@@ -694,6 +694,10 @@
         {
           "type": "SYMBOL",
           "name": "binary_selector"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "keyword_selector"
         }
       ]
     },
@@ -721,6 +725,31 @@
         "type": "PATTERN",
         "value": "[+\\-\\/\\\\*~<>=@,%|&?!·÷±×]+"
       }
+    },
+    "keyword_selector": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "keyword"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "argument"
+          }
+        ]
+      }
+    },
+    "keyword": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_][A-Za-z0-9_]*:"
     },
     "_method_defintion_body": {
       "type": "FIELD",
@@ -985,7 +1014,12 @@
       "name": "line_continuation"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "keyword_selector",
+      "keyword_selector"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

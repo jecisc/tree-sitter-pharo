@@ -337,6 +337,25 @@
     }
   },
   {
+    "type": "keyword_selector",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "method_definition",
     "named": true,
     "fields": {
@@ -404,6 +423,10 @@
         "types": [
           {
             "type": "binary_selector",
+            "named": true
+          },
+          {
+            "type": "keyword_selector",
             "named": true
           },
           {
@@ -595,6 +618,10 @@
   },
   {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "keyword",
     "named": true
   },
   {

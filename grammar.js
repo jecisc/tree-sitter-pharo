@@ -10,6 +10,10 @@
 module.exports = grammar({
   name: "pharo",
 
+  conflicts: $ => [
+    [$.keyword_selector, $.keyword_selector]
+  ],
+
   extras: $ => [
     $.comment,
     /[\s\u00A0\uFEFF\u3000]+/,
@@ -80,11 +84,16 @@ module.exports = grammar({
     _selector : $ => choice(
                               alias($.identifier, $.unary_selector),
                               $.binary_selector,
-                            ), //WIP
+                              $.keyword_selector
+                            ),
 
     binary_selector : $ => seq($.binary_operator, alias($.identifier, $.argument)),
 
     binary_operator : $ => token(/[+\-\/\\*~<>=@,%|&?!·÷±×]+/),
+
+    keyword_selector : $ => repeat1(seq($.keyword,  alias($.identifier, $.argument))),
+    
+    keyword : $ => /[A-Za-z_][A-Za-z0-9_]*:/,
 
     _method_defintion_body : $ => field('body', choice(
                                                       seq(optional($.temporaries), $._statement),
@@ -104,7 +113,7 @@ module.exports = grammar({
                       $.false,
                       $.nil,
                       $.thisContext,
-                      $.thisProcess),
+                      $.thisProcess), //WIP
 
 
     // Literals

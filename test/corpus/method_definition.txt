@@ -72,6 +72,7 @@ Method with binary selector
     signature: (binary_selector
                     (binary_operator)
                     (argument))))
+
 ==================
 Method with binary selector (multiple characters)
 ==================
@@ -85,4 +86,22 @@ Method with binary selector (multiple characters)
   (method_definition
     signature: (binary_selector
                     (binary_operator)
+                    (argument))))
+
+
+==================
+Method with keyword
+==================
+
+x: aNumber y: anothenNumber
+    
+
+---
+
+(file
+  (method_definition
+    signature: (keyword_selector
+                    (keyword)
+                    (argument)
+                    (keyword)
                     (argument))))
