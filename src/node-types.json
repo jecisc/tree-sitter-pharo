@@ -322,7 +322,7 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -339,6 +339,10 @@
           },
           {
             "type": "super",
+            "named": true
+          },
+          {
+            "type": "temporaries",
             "named": true
           },
           {
@@ -448,6 +452,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "temporaries",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -578,6 +597,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

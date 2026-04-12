@@ -77,7 +77,12 @@ module.exports = grammar({
 
     class_name :  $ => token(/[^>]*/),
 
-    _method_defintion_body : $ => field('body', $._statement), //WIP
+    _method_defintion_body : $ => field('body', choice(
+                                                      seq(optional($.temporaries), $._statement),
+                                                      seq($.temporaries, optional($._statement)),
+                                                    )), //WIP
+
+    temporaries : $ =>  seq('|', optional(repeat($.identifier)), '|'),
 
     _statement : $ => choice($._expression), //WIP
 

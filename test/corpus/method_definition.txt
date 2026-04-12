@@ -27,3 +27,33 @@ TinyLogger class >> x [
     protocol: (protocol)
     owner: (class_name)
     signature: (identifier)))
+
+==================
+Method with empty temporaries
+==================
+
+x
+    | |
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (temporaries)))
+
+==================
+Method with temporaries
+==================
+
+x
+    | temp1 temp2 |
+
+---
+
+(file
+  (method_definition
+    signature: (identifier)
+    body: (temporaries
+            (identifier)
+            (identifier))))
