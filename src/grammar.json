@@ -566,7 +566,7 @@
           "name": "signature",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_selector"
           }
         },
         {
@@ -611,7 +611,7 @@
           "name": "signature",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_selector"
           }
         },
         {
@@ -678,6 +678,20 @@
         "type": "PATTERN",
         "value": "[^>]*"
       }
+    },
+    "_selector": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "unary_selector"
+        }
+      ]
     },
     "_method_defintion_body": {
       "type": "FIELD",

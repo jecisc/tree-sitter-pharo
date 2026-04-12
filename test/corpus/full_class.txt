@@ -132,4 +132,4 @@ TinyLogger class >> empty [
         methods: (method_definition
             protocol: (protocol)
             owner: (class_name)
-            signature: (identifier))))
+            signature: (unary_selector))))

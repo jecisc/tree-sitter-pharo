@@ -9,7 +9,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)))
+    signature: (unary_selector)))
 
 ==================
 Empty tonel method definition
@@ -26,7 +26,7 @@ TinyLogger class >> x [
   (method_definition
     protocol: (protocol)
     owner: (class_name)
-    signature: (identifier)))
+    signature: (unary_selector)))
 
 ==================
 Method with empty temporaries
@@ -39,7 +39,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (temporaries)))
 
 ==================
@@ -53,7 +53,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (temporaries
-            (identifier)
-            (identifier))))
+      (identifier)
+      (identifier))))

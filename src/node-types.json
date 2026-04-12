@@ -384,7 +384,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "unary_selector",
             "named": true
           }
         ]
@@ -593,6 +593,10 @@
   },
   {
     "type": "true",
+    "named": true
+  },
+  {
+    "type": "unary_selector",
     "named": true
   },
   {

@@ -9,7 +9,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (self)))
 
 ==================
@@ -23,7 +23,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (super)))
 
 ==================
@@ -37,7 +37,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (nil)))
 
 ==================
@@ -51,7 +51,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (true)))
 
 ==================
@@ -65,7 +65,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (false)))
 
 ==================
@@ -79,7 +79,7 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (thisContext)))
 
 ==================
@@ -93,5 +93,5 @@ x
 
 (file
   (method_definition
-    signature: (identifier)
+    signature: (unary_selector)
     body: (thisProcess)))

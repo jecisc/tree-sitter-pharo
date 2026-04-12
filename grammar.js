@@ -69,13 +69,15 @@ module.exports = grammar({
     // Method definitions
     method_definition: $ => choice($._tonel_method_definition, $._raw_method_definition),
 
-    _raw_method_definition: $ => seq(field('signature', $.identifier), optional($._method_defintion_body)),
+    _raw_method_definition: $ => seq(field('signature', $._selector), optional($._method_defintion_body)),
 
-    _tonel_method_definition: $ => seq(field('protocol', $.protocol), field('owner' , $.class_name) , '>>' , field('signature', $.identifier), '[' , optional($._method_defintion_body) , ']'), 
+    _tonel_method_definition: $ => seq(field('protocol', $.protocol), field('owner' , $.class_name) , '>>' , field('signature', $._selector), '[' , optional($._method_defintion_body) , ']'), 
 
     protocol : $ => seq('{', '#category', ':', "'", token(/[^']+/) , "'", "}"),
 
     class_name :  $ => token(/[^>]*/),
+
+    _selector : $ => choice(alias($.identifier, $.unary_selector)), //WIP
 
     _method_defintion_body : $ => field('body', choice(
                                                       seq(optional($.temporaries), $._statement),
