@@ -77,7 +77,14 @@ module.exports = grammar({
 
     class_name :  $ => token(/[^>]*/),
 
-    _selector : $ => choice(alias($.identifier, $.unary_selector)), //WIP
+    _selector : $ => choice(
+                              alias($.identifier, $.unary_selector),
+                              $.binary_selector,
+                            ), //WIP
+
+    binary_selector : $ => seq($.binary_operator, alias($.identifier, $.argument)),
+
+    binary_operator : $ => token(/[+\-\/\\*~<>=@,%|&?!·÷±×]+/),
 
     _method_defintion_body : $ => field('body', choice(
                                                       seq(optional($.temporaries), $._statement),

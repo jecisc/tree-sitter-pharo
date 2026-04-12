@@ -57,3 +57,32 @@ x
     body: (temporaries
       (identifier)
       (identifier))))
+
+==================
+Method with binary selector
+==================
+
++ aNumber
+    
+
+---
+
+(file
+  (method_definition
+    signature: (binary_selector
+                    (binary_operator)
+                    (argument))))
+==================
+Method with binary selector (multiple characters)
+==================
+
++-/\*~<>=@,%|&?!·÷±× aNumber
+    
+
+---
+
+(file
+  (method_definition
+    signature: (binary_selector
+                    (binary_operator)
+                    (argument))))

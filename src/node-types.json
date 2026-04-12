@@ -1,5 +1,24 @@
 [
   {
+    "type": "binary_selector",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        },
+        {
+          "type": "binary_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "class_definition",
     "named": true,
     "fields": {
@@ -384,6 +403,10 @@
         "required": true,
         "types": [
           {
+            "type": "binary_selector",
+            "named": true
+          },
+          {
             "type": "unary_selector",
             "named": true
           }
@@ -544,6 +567,14 @@
   {
     "type": "]",
     "named": false
+  },
+  {
+    "type": "argument",
+    "named": true
+  },
+  {
+    "type": "binary_operator",
+    "named": true
   },
   {
     "type": "class_name",

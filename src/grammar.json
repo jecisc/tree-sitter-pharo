@@ -690,8 +690,37 @@
           },
           "named": true,
           "value": "unary_selector"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "binary_selector"
         }
       ]
+    },
+    "binary_selector": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "binary_operator"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "argument"
+        }
+      ]
+    },
+    "binary_operator": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[+\\-\\/\\\\*~<>=@,%|&?!·÷±×]+"
+      }
     },
     "_method_defintion_body": {
       "type": "FIELD",
